@@ -1,1 +1,0 @@
-https://s3.amazonaws.com/myBucket/acrylic/?AWSAccessKeyId=AKIAITYK4QZXANJXZGWA&Expires=1535684985&Signature=plAiY1%2FKYTAeqKkrWoUf%2FFEOeiw%3D3D3D3D

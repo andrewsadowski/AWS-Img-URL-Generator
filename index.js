@@ -16,7 +16,7 @@ const getBucketLinks = () => {
 
     for (var i = 0; i < bucketContents.length; i++) {
       var urlParams = {
-        Bucket: 'gallery-marquez-images',
+        Bucket: bucketParams.Bucket,
         Key: bucketContents[i].Key
       };
 

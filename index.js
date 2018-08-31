@@ -9,25 +9,29 @@ const bucketParams = { Bucket: 'gallery-marquez-images' };
 const imageArray = [];
 const bucketContentsArr = [];
 
-s3.listObjects(bucketParams, function(err, data) {
-  var bucketContents = data.Contents;
-  bucketContentsArr.push(bucketContents);
+const getBucketLinks = () => {
+  s3.listObjects(bucketParams, function(err, data) {
+    var bucketContents = data.Contents;
+    bucketContentsArr.push(bucketContents);
 
-  for (var i = 0; i < bucketContents.length; i++) {
-    var urlParams = {
-      Bucket: 'gallery-marquez-images',
-      Key: bucketContents[i].Key
-    };
+    for (var i = 0; i < bucketContents.length; i++) {
+      var urlParams = {
+        Bucket: 'gallery-marquez-images',
+        Key: bucketContents[i].Key
+      };
 
-    s3.getSignedUrl('getObject', urlParams, function(err, url) {
-      imageArray.push(url);
-      let urlBreak = url + '\n';
-      fs.appendFile('./output/imageLinks.txt', urlBreak, err => {
-        if (err) throw err;
+      s3.getSignedUrl('getObject', urlParams, function(err, url) {
+        imageArray.push(url);
+        let urlBreak = url + '\n';
+        fs.appendFile('./output/imageLinks.txt', urlBreak, err => {
+          if (err) throw err;
+        });
       });
-    });
-  }
-});
+    }
+  });
+};
+
+getBucketLinks();
 
 const writeDataToFile = link => {
   fs.writeFile('./output/imageLinks.txt', link, err => {

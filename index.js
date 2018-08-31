@@ -9,6 +9,10 @@ const bucketParams = { Bucket: 'gallery-marquez-images' };
 const imageArray = [];
 const bucketContentsArr = [];
 
+/**
+ * @return {array} Returns an array of URLs from AWS S3 Bucket
+ */
+
 const getBucketLinks = () => {
   s3.listObjects(bucketParams, function(err, data) {
     var bucketContents = data.Contents;

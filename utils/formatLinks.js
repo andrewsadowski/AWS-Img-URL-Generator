@@ -30,11 +30,25 @@ const unsignImageLinks = () => {
   return unsignedURLs;
 };
 
+const writeUnsignedLinksToFile = () => {
+  let unsignedArr = unsignImageLinks();
+
+  unsignedArr.forEach(link => {
+    fs.appendFile('output/unsignedURLs.txt', link + '\n', err => {
+      if (err) return console.log(err);
+    });
+  });
+
+  return unsignedArr;
+};
+
+writeUnsignedLinksToFile();
+
 const createJSONImageObject = unsignedLinkArr => {
   return unsignedLinkArr;
 };
 
-console.log(unsignImageLinks());
+// console.log(unsignImageLinks());
 
 module.exports = {
   unsignImageLinks

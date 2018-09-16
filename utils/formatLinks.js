@@ -31,3 +31,7 @@ const unsignImageLinks = () => {
 };
 
 console.log(unsignImageLinks());
+
+module.exports = {
+  unsignImageLinks
+};

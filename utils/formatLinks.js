@@ -30,6 +30,10 @@ const unsignImageLinks = () => {
   return unsignedURLs;
 };
 
+const createJSONImageObject = unsignedLinkArr => {
+  return unsignedLinkArr;
+};
+
 console.log(unsignImageLinks());
 
 module.exports = {

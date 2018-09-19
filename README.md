@@ -28,5 +28,5 @@ aws_secret_access_key = {your_aws_secret_access_key}
 CD into directory of application and type:
 
 ```
-npm run start
+npm run start -- 'bucket-name'
 ```

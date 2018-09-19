@@ -2,10 +2,24 @@ const fs = require('fs');
 const AWS = require('aws-sdk');
 const S3 = require('aws-sdk/clients/s3');
 AWS.config.loadFromPath('./config.json');
+const argv = require('yargs')
+  .alias('b', 'bucketName')
+  .usage('Usage: add the bucket name with the -b flag')
+  .example('node getImageLinks.js -b "my-images"')
+  .help('h').argv;
 
 const s3 = new AWS.S3();
-const bucketParams = { Bucket: 'gallery-marquez-images' };
 
+
+let bucketName;
+
+if (argv.b) {
+  bucketName = argv.b;
+} else {
+  bucketName = 'test'
+}
+
+const bucketParams = { Bucket: bucketName };
 const imageArray = [];
 const bucketContentsArr = [];
 

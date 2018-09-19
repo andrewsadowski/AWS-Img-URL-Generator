@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node utils/getImageLinks.js",
+    "start": "node utils/getImageLinks.js -b",
     "start:watch": "nodemon utils/getImageLinks.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.305.0"
+    "aws-sdk": "^2.305.0",
+    "yargs": "^12.0.2"
   }
 }
